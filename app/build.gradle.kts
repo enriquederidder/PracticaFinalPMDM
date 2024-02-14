@@ -6,6 +6,10 @@ plugins {
 android {
     namespace = "edr.practica.practicafinalpmdm"
     compileSdk = 34
+    buildFeatures{
+        dataBinding = true
+        viewBinding = true
+    }
 
     defaultConfig {
         applicationId = "edr.practica.practicafinalpmdm"
@@ -36,6 +40,8 @@ android {
 }
 
 dependencies {
+    implementation ("androidx.activity:activity-ktx:1.6.1")
+    implementation ("androidx.fragment:fragment-ktx:1.5.5")
 
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.appcompat:appcompat:1.6.1")

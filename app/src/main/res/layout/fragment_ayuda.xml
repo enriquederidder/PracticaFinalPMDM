@@ -34,7 +34,7 @@
             android:background="@drawable/rounded_exdittext" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="E-mail"
@@ -50,7 +50,7 @@
             android:inputType="textEmailAddress" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Numero telefono"
@@ -66,7 +66,7 @@
             android:inputType="phone" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Descripcion problema"
