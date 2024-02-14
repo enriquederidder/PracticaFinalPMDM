@@ -73,11 +73,11 @@
             android:id="@+id/floatingActionEnviar"
             android:layout_width="58dp"
             android:layout_height="52dp"
-            android:layout_margin="5dp"
+            android:layout_margin="15dp"
             android:clickable="true"
             android:src="@android:drawable/ic_menu_send"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="350dp"
+            app:layout_constraintEnd_toEndOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
