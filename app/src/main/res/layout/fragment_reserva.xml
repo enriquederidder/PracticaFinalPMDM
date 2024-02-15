@@ -10,14 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionEnviar"
+            android:layout_width="60dp"
+            android:layout_height="55dp"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:src="@android:drawable/ic_menu_send"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
         <LinearLayout
-            android:layout_width="389dp"
-            android:layout_height="602dp"
+            android:layout_width="0dp"
+            android:layout_height="654dp"
             android:layout_margin="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="109dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -28,6 +34,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:gravity="center"
                 android:text="Viaje ida y Vuelta"
                 android:textSize="20sp" />
@@ -36,48 +43,121 @@
                 android:id="@+id/editTextSalida"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:layout_marginTop="15dp"
                 android:ems="10"
                 android:hint="Salida"
                 android:inputType="text" />
 
-            <Button
-                android:id="@+id/buttonFechaSalida"
-                android:layout_width="145dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Fecha Salida" />
+                android:gravity="center|top"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonFechaSalida"
+                    android:layout_width="145dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="5dp"
+                    android:text="Fecha Salida" />
+
+                <Button
+                    android:id="@+id/buttonHoraSalida"
+                    android:layout_width="144dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="5dp"
+                    android:text="Hora salida" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewFechaSalida"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/textViewHoraSalida"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="TextView" />
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/editTextDestino"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
+                android:layout_marginTop="15dp"
                 android:ems="10"
                 android:hint="Destino"
                 android:inputType="text" />
 
-            <Button
-                android:id="@+id/buttonFechaRegreso"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Fecha Regreso" />
+                android:gravity="center|top"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonFechaRegreso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="5dp"
+                    android:text="Fecha Regreso" />
+
+                <Button
+                    android:id="@+id/buttonHoraRegreso"
+                    android:layout_width="144dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="5dp"
+                    android:text="Hora Regreso" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewFechaRegreso"
+                    android:layout_width="186dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/textViewHoraRegreso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="TextView" />
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/editTextPasajeros"
                 android:layout_width="wrap_content"
                 android:layout_height="74dp"
+                android:layout_marginTop="15dp"
                 android:ems="10"
                 android:hint="Cantidad Pasajeros"
                 android:inputType="text" />
 
         </LinearLayout>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionEnviar"
-            android:layout_width="60dp"
-            android:layout_height="55dp"
-            android:layout_margin="5dp"
-            android:clickable="true"
-            android:src="@android:drawable/ic_menu_send"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
