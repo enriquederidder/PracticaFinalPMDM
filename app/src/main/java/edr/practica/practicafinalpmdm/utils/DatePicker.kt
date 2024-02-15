@@ -3,8 +3,10 @@ package edr.practica.practicafinalpmdm.utils
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.os.Bundle
+import android.view.View
 import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
+import edr.practica.practicafinalpmdm.ReservaFragment
 import java.util.Calendar
 
 class DatePicker : DialogFragment(), DatePickerDialog.OnDateSetListener {
@@ -22,7 +24,9 @@ class DatePicker : DialogFragment(), DatePickerDialog.OnDateSetListener {
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, day: Int) {
-        // Do something with the date the user picks.
+        val formattedDate = "$year-${month + 1}-$day"
+        val reservaFragment = parentFragment as? ReservaFragment
+        reservaFragment?.updateDateTextView(formattedDate)
     }
 
 }

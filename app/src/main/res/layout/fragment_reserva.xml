@@ -52,22 +52,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|top"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="15dp">
 
                 <Button
                     android:id="@+id/buttonFechaSalida"
                     android:layout_width="145dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="10dp"
                     android:text="Fecha Salida" />
 
                 <Button
                     android:id="@+id/buttonHoraSalida"
                     android:layout_width="144dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="10dp"
                     android:text="Hora salida" />
 
             </LinearLayout>
@@ -81,7 +80,7 @@
                 <TextView
                     android:id="@+id/textViewFechaSalida"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="TextView" />
@@ -89,7 +88,7 @@
                 <TextView
                     android:id="@+id/textViewHoraSalida"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="TextView" />
@@ -108,22 +107,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|top"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="15dp">
 
                 <Button
                     android:id="@+id/buttonFechaRegreso"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="10dp"
                     android:text="Fecha Regreso" />
 
                 <Button
                     android:id="@+id/buttonHoraRegreso"
                     android:layout_width="144dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="10dp"
                     android:text="Hora Regreso" />
             </LinearLayout>
 
@@ -135,15 +133,15 @@
 
                 <TextView
                     android:id="@+id/textViewFechaRegreso"
-                    android:layout_width="186dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="181dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="TextView" />
 
                 <TextView
                     android:id="@+id/textViewHoraRegreso"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="TextView" />

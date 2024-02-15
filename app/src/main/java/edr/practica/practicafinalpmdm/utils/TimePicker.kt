@@ -7,6 +7,7 @@ import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
 import java.util.Calendar
 import android.text.format.DateFormat;
+import edr.practica.practicafinalpmdm.ReservaFragment
 
 class TimePicker : DialogFragment(), TimePickerDialog.OnTimeSetListener {
 
@@ -21,6 +22,9 @@ class TimePicker : DialogFragment(), TimePickerDialog.OnTimeSetListener {
     }
 
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
-        // Do something with the time the user picks.
+        // Update the text view with the selected time
+        val formattedTime = "$hourOfDay:$minute" // Format the time as needed
+        val reservaFragment = parentFragment as? ReservaFragment
+        reservaFragment?.updateTimeTextView(formattedTime)
     }
 }
