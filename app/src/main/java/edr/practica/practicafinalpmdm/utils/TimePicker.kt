@@ -22,9 +22,11 @@ class TimePicker : DialogFragment(), TimePickerDialog.OnTimeSetListener {
     }
 
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
-        // Update the text view with the selected time
-        val formattedTime = "$hourOfDay:$minute" // Format the time as needed
+        val formattedTime = "$hourOfDay:$minute"
         val reservaFragment = parentFragment as? ReservaFragment
-        reservaFragment?.updateTimeTextView(formattedTime)
+        when (tag) {
+            "timePickerDeparture" -> reservaFragment?.updateDepartureTimeTextView(formattedTime)
+            "timePickerReturn" -> reservaFragment?.updateReturnTimeTextView(formattedTime)
+        }
     }
 }

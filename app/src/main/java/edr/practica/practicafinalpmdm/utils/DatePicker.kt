@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.View
 import android.widget.DatePicker
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import edr.practica.practicafinalpmdm.ReservaFragment
 import java.util.Calendar
@@ -26,7 +27,19 @@ class DatePicker : DialogFragment(), DatePickerDialog.OnDateSetListener {
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, day: Int) {
         val formattedDate = "$year-${month + 1}-$day"
         val reservaFragment = parentFragment as? ReservaFragment
-        reservaFragment?.updateDateTextView(formattedDate)
+
+        if (tag == "datePickerReturn") {
+            val departureDate = reservaFragment?.getDepartureDate()
+            if (departureDate != null && formattedDate <= departureDate) {
+
+                Toast.makeText(requireContext(), "Fecha de regreso no puede ser antes la de salida", Toast.LENGTH_SHORT).show()
+                return
+            }
+        }
+        when (tag) {
+            "datePickerDeparture" -> reservaFragment?.updateDepartureDateTextView(formattedDate)
+            "datePickerReturn" -> reservaFragment?.updateReturnDateTextView(formattedDate)
+        }
     }
 
 }

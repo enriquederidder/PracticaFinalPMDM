@@ -39,10 +39,16 @@
                 android:text="Viaje ida y Vuelta"
                 android:textSize="20sp" />
 
+            <Button
+                android:id="@+id/buttonSetLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fijar Ubicaion Actual" />
+
             <EditText
                 android:id="@+id/editTextSalida"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="81dp"
                 android:layout_marginTop="15dp"
                 android:ems="10"
                 android:hint="Salida"
@@ -82,16 +88,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="TextView" />
+                    android:gravity="center" />
 
                 <TextView
                     android:id="@+id/textViewHoraSalida"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="TextView" />
+                    android:gravity="center" />
             </LinearLayout>
 
             <EditText
@@ -135,16 +139,14 @@
                     android:id="@+id/textViewFechaRegreso"
                     android:layout_width="181dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="TextView" />
+                    android:gravity="center" />
 
                 <TextView
                     android:id="@+id/textViewHoraRegreso"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="TextView" />
+                    android:gravity="center" />
             </LinearLayout>
 
             <EditText
