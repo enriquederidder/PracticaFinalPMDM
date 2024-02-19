@@ -5,36 +5,57 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import edr.practica.practicafinalpmdm.models.DatosViaje
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ConsultarReservaFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ConsultarReservaFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var reservaAdapter: ReservaAdapter
+    private val datosViajeList = mutableListOf<DatosViaje>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_consultar_reserva, container, false)
+        val view = inflater.inflate(R.layout.fragment_consultar_reserva, container, false)
+        recyclerView = view.findViewById(R.id.ConsultarRecycleViewer)
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Initialize RecyclerView and adapter
+        reservaAdapter = ReservaAdapter(datosViajeList)
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = reservaAdapter
+        }
+
+        // Add sample data
+        datosViajeList.add(
+            DatosViaje(
+                "Salida 1",
+                "2024-02-20",
+                "08:00 AM",
+                "Destino 1",
+                "2024-02-25",
+                "06:00 PM",
+                2
+            )
+        )
+
+        // Notify adapter about the data change
+        reservaAdapter.notifyDataSetChanged()
+    }
+
+    fun addDatosViaje(datosViaje: DatosViaje) {
+        datosViajeList.add(datosViaje)
+        reservaAdapter.notifyDataSetChanged()
     }
 
     companion object {

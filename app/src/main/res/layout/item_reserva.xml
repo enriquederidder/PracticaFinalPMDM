@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewDireccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="Dirección de salida:"/>
+
+    <TextView
+        android:id="@+id/textViewFechaSalida"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:text="Fecha de salida:"/>
+
+    <TextView
+        android:id="@+id/textViewHoraSalida"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:text="Hora de salida:"/>
+
+    <TextView
+        android:id="@+id/textViewDestino"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="Destino:"/>
+
+    <TextView
+        android:id="@+id/textViewFechaRegreso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:text="Fecha de regreso:"/>
+
+    <TextView
+        android:id="@+id/textViewHoraRegreso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:text="Hora de regreso:"/>
+
+    <TextView
+        android:id="@+id/textViewCantidadPasajeros"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="Cantidad de pasajeros:"/>
+
+</LinearLayout>

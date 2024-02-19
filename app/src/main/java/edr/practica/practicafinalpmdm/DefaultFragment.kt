@@ -11,7 +11,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import edr.practica.practicafinalpmdm.databinding.FragmentConsultarReservaBinding
 import edr.practica.practicafinalpmdm.databinding.FragmentDefaultBinding
-
 class DefaultFragment : Fragment() {
 
     private lateinit var v: View

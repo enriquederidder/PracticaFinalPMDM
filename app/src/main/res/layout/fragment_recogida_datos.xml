@@ -37,22 +37,6 @@
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/editTextDireccion"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:ems="10"
-                android:hint="Direccion"
-                android:inputType="text" />
-
-            <EditText
-                android:id="@+id/editTextCodigoPostal"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:ems="10"
-                android:hint="Codigo postal"
-                android:inputType="text" />
-
-            <EditText
                 android:id="@+id/editTextTextEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
