@@ -14,6 +14,12 @@ class ReservaAdapter(private val datosViajeList: MutableList<DatosViaje>) : Recy
         return ViewHolder(view)
     }
 
+    fun setData(newData: List<DatosViaje>) {
+        datosViajeList.clear()
+        datosViajeList.addAll(newData)
+        notifyDataSetChanged()
+    }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val datosViaje = datosViajeList[position]
         holder.bind(datosViaje)

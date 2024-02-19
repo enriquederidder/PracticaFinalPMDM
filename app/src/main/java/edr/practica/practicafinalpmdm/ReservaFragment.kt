@@ -34,49 +34,42 @@ class ReservaFragment : Fragment() {
     private lateinit var horaRegresoTextView: TextView
     // Declaraciones para gps
     private lateinit var locationHelper: LocationHelper
+    private val viaje: ReservaViewModel by activityViewModels()
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_reserva, container, false)
-        // Initialize your views
-        val editTextDestino = v.findViewById<EditText>(R.id.editTextDestino)
-        val editTextSalida = v.findViewById<EditText>(R.id.editTextSalida)
-        val editTextPasajeros = v.findViewById<EditText>(R.id.editTextPasajeros)
-        val textViewFechaSalida = v.findViewById<TextView>(R.id.textViewFechaSalida)
-        val textViewFechaRegreso = v.findViewById<TextView>(R.id.textViewFechaRegreso)
-        val textViewHoraSalida = v.findViewById<TextView>(R.id.textViewHoraSalida)
-        val textViewHoraRegreso = v.findViewById<TextView>(R.id.textViewHoraRegreso)
+
         // Set up click listeners
         v.findViewById<FloatingActionButton>(R.id.floatingActionEnviar).setOnClickListener {
-            // Get text from EditText fields
-            direccionDestino = editTextDestino.text.toString()
-            direccionSalida = editTextSalida.text.toString()
-            cantidadPasajeros = editTextPasajeros.text.toString()
-            fechaSalida = textViewFechaSalida.text.toString()
-            fechaRegreso = textViewFechaRegreso.text.toString()
-            horaSalida = textViewHoraSalida.text.toString()
-            horaRegreso = textViewHoraRegreso.text.toString()
 
-            // Create a new DatosViaje object
-            val newDatosViaje = DatosViaje(
-                direccionSalida,
-                fechaSalida,
+            var salida = v.findViewById<TextView>(R.id.editTextSalida).text.toString()
+            var destino = v.findViewById<TextView>(R.id.editTextDestino).text.toString()
+            var pasajeros = v.findViewById<TextView>(R.id.editTextPasajeros).text.toString()
+            var horaSalida = v.findViewById<TextView>(R.id.buttonHoraSalida).text.toString()
+            var fechaSalida = v.findViewById<TextView>(R.id.buttonFechaSalida).text.toString()
+            var horaRetorno = v.findViewById<TextView>(R.id.textViewHoraRegreso).text.toString()
+            var fechaRetorno = v.findViewById<TextView>(R.id.textViewFechaRegreso).text.toString()
+
+            val datosViaje = DatosViaje(
+                salida,
+                destino,
                 horaSalida,
-                direccionDestino,
-                fechaRegreso,
-                horaRegreso,
-                cantidadPasajeros.toIntOrNull() ?: 0
+                fechaSalida,
+                horaRetorno,
+                fechaRetorno,
+                pasajeros.toInt()
             )
-            // Call interface method to pass the data to the activity
-            (activity as? ReservaListener)?.onDatosViajeAdded(newDatosViaje)
-            val fm: FragmentManager = parentFragmentManager
-            fm.commit {
-                replace(R.id.fragmentContainerView, RecogidaDatosFragment.newInstance())
-                addToBackStack("replacement")
-            }
-            true
+
+            // Add data to ViewModel
+            viaje.addViaje(datosViaje)
+
+            parentFragmentManager.popBackStack()
         }
 
 

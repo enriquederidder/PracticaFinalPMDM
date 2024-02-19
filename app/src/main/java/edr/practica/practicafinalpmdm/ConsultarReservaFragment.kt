@@ -1,21 +1,22 @@
 package edr.practica.practicafinalpmdm
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.lifecycle.Observer
 import edr.practica.practicafinalpmdm.models.DatosViaje
 
 
 class ConsultarReservaFragment : Fragment() {
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var reservaAdapter: ReservaAdapter
-    private val datosViajeList = mutableListOf<DatosViaje>()
-
+    private val viajeViewModel: ReservaViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,32 +31,21 @@ class ConsultarReservaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Initialize RecyclerView and adapter
-        reservaAdapter = ReservaAdapter(datosViajeList)
+        reservaAdapter = ReservaAdapter(mutableListOf())
         recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = reservaAdapter
         }
 
-        // Add sample data
-        datosViajeList.add(
-            DatosViaje(
-                "Salida 1",
-                "2024-02-20",
-                "08:00 AM",
-                "Destino 1",
-                "2024-02-25",
-                "06:00 PM",
-                2
-            )
-        )
-
-        // Notify adapter about the data change
-        reservaAdapter.notifyDataSetChanged()
-    }
-
-    fun addDatosViaje(datosViaje: DatosViaje) {
-        datosViajeList.add(datosViaje)
-        reservaAdapter.notifyDataSetChanged()
+        // Observe changes in ViewModel's data and update UI accordingly
+        viajeViewModel.viajes.observe(viewLifecycleOwner, Observer { viajes ->
+            viajes?.let {
+                reservaAdapter.apply {
+                    setData(it)
+                    notifyDataSetChanged()
+                }
+            }
+        })
     }
 
     companion object {
