@@ -8,35 +8,32 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import edr.practica.practicafinalpmdm.utils.DatePicker
 
-private lateinit var v: View
 
 class RecogidaDatosFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-    }
+    private lateinit var v: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_default, container, false)
+        v = inflater.inflate(R.layout.fragment_recogida_datos, container, false)
 
-        v.findViewById<Button>(R.id.buttonbookNow).setOnClickListener {
-            val fm: androidx.fragment.app.FragmentManager = parentFragmentManager
+        v.findViewById<FloatingActionButton>(R.id.floatingActionEnviarFin).setOnClickListener {
+            val fm: FragmentManager = parentFragmentManager
             fm.commit {
-                replace(edr.practica.practicafinalpmdm.R.id.fragmentContainerView, edr.practica.practicafinalpmdm.ReservaFragment.newInstance())
+                replace(R.id.fragmentContainerView, DefaultFragment.newInstance())
                 addToBackStack("replacement")
             }
             true
         }
+
         return v
     }
-
     companion object {
         @JvmStatic
         fun newInstance() =

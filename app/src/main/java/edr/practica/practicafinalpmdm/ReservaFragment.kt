@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.commit
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -63,13 +64,14 @@ class ReservaFragment : Fragment() {
                 horaRetorno,
                 pasajeros.toInt()
             )
-
-            // Add data to ViewModel
+            locationHelper.stopLocationUpdates()
             viaje.addViaje(datosViaje)
-
-            parentFragmentManager.popBackStack()
+            val fm: FragmentManager = parentFragmentManager
+            fm.commit {
+                replace(R.id.fragmentContainerView, RecogidaDatosFragment.newInstance())
+                addToBackStack("replacement")
+            }
         }
-
 
         locationHelper = LocationHelper(requireContext())
         v.findViewById<Button>(R.id.buttonSetLocation).setOnClickListener {
