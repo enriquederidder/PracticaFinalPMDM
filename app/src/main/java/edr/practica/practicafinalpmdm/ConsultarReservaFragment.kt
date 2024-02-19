@@ -9,7 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.lifecycle.Observer
-import edr.practica.practicafinalpmdm.models.DatosViaje
+import edr.practica.practicafinalpmdm.models.ReservaViewModel
 
 
 class ConsultarReservaFragment : Fragment() {

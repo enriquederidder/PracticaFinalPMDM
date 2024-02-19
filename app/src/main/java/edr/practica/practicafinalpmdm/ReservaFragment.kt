@@ -9,14 +9,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.commit
-import androidx.fragment.app.viewModels
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import edr.practica.practicafinalpmdm.models.DatosViaje
+import edr.practica.practicafinalpmdm.models.ReservaViewModel
 import edr.practica.practicafinalpmdm.utils.*
 
 class ReservaFragment : Fragment() {
@@ -49,20 +47,20 @@ class ReservaFragment : Fragment() {
         v.findViewById<FloatingActionButton>(R.id.floatingActionEnviar).setOnClickListener {
 
             var salida = v.findViewById<TextView>(R.id.editTextSalida).text.toString()
+            var fechaSalida = v.findViewById<TextView>(R.id.textViewFechaSalida).text.toString()
+            var horaSalida = v.findViewById<TextView>(R.id.textViewHoraSalida).text.toString()
             var destino = v.findViewById<TextView>(R.id.editTextDestino).text.toString()
-            var pasajeros = v.findViewById<TextView>(R.id.editTextPasajeros).text.toString()
-            var horaSalida = v.findViewById<TextView>(R.id.buttonHoraSalida).text.toString()
-            var fechaSalida = v.findViewById<TextView>(R.id.buttonFechaSalida).text.toString()
-            var horaRetorno = v.findViewById<TextView>(R.id.textViewHoraRegreso).text.toString()
             var fechaRetorno = v.findViewById<TextView>(R.id.textViewFechaRegreso).text.toString()
+            var horaRetorno = v.findViewById<TextView>(R.id.textViewHoraRegreso).text.toString()
+            var pasajeros = v.findViewById<TextView>(R.id.editTextPasajeros).text.toString()
 
             val datosViaje = DatosViaje(
                 salida,
-                destino,
-                horaSalida,
                 fechaSalida,
-                horaRetorno,
+                horaSalida,
+                destino,
                 fechaRetorno,
+                horaRetorno,
                 pasajeros.toInt()
             )
 

@@ -1,4 +1,4 @@
-package edr.practica.practicafinalpmdm
+package edr.practica.practicafinalpmdm.models
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
