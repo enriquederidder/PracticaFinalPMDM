@@ -1,10 +1,11 @@
 package edr.practica.practicafinalpmdm
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import edr.practica.practicafinalpmdm.databinding.ActivityMainBinding
-import edr.practica.practicafinalpmdm.models.DatosViaje
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -15,12 +16,42 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = ""
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             onBackPressedDispatcher.onBackPressed()
         }
-        return super.onOptionsItemSelected(item)
+        when (item.itemId) {
+            R.id.irAyuda -> {
+                replaceFragment(AyudaFragment())
+                return true
+            }
+
+            R.id.irConsultarViaje -> {
+                replaceFragment(ConsultarReservaFragment())
+                return true
+            }
+
+            R.id.irReservar -> {
+                replaceFragment(ReservaFragment())
+                return true
+            }
+
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_items, menu)
+        return true
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerView, fragment)
+            .addToBackStack("replacement")
+            .commit()
+    }
 }
