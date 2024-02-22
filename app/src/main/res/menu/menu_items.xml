@@ -10,4 +10,9 @@
     <item
         android:id="@+id/irReservar"
         android:title="Reservar" />
+    <item
+        android:id="@+id/action_open_drawer"
+        android:icon="@android:drawable/ic_menu_revert"
+        android:title="Open Drawer"
+        app:showAsAction="always" />
 </menu>
