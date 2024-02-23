@@ -37,6 +37,7 @@ class ReservaAdapter(private val datosViajeList: MutableList<DatosViaje>) : Recy
         private val fechaRegresoTextView: TextView = itemView.findViewById(R.id.textViewFechaRegreso)
         private val horaRegresoTextView: TextView = itemView.findViewById(R.id.textViewHoraRegreso)
         private val cantidadPasajerosTextView: TextView = itemView.findViewById(R.id.textViewCantidadPasajeros)
+        private val nombreClienteTextView: TextView = itemView.findViewById(R.id.textViewNombreCliente)
 
         fun bind(datosViaje: DatosViaje) {
             direccionSalidaTextView.text = "Dirección de salida: ${datosViaje.direccion}"
