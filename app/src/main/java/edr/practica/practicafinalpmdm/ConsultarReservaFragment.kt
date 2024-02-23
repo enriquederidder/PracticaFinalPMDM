@@ -9,14 +9,16 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.lifecycle.Observer
+import edr.practica.practicafinalpmdm.models.RecogidaDatosViewModel
 import edr.practica.practicafinalpmdm.models.ReservaViewModel
-
+import edr.practica.practicafinalpmdm.ReservaAdapter
 
 class ConsultarReservaFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var reservaAdapter: ReservaAdapter
     private val viajeViewModel: ReservaViewModel by activityViewModels()
+    private val recogidaDatosViewModel: RecogidaDatosViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +33,7 @@ class ConsultarReservaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Initialize RecyclerView and adapter
-        reservaAdapter = ReservaAdapter(mutableListOf())
+        reservaAdapter = ReservaAdapter(mutableListOf(), recogidaDatosViewModel) // Pass the RecogidaDatosViewModel instance
         recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = reservaAdapter

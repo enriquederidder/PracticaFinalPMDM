@@ -58,8 +58,9 @@ class ReservaFragment : Fragment() {
                 horaRetorno,
                 pasajeros.toInt()
             )
-            locationHelper.stopLocationUpdates()
             viaje.addViaje(datosViaje)
+
+            locationHelper.stopLocationUpdates()
             val fm: FragmentManager = parentFragmentManager
             fm.commit {
                 replace(R.id.fragmentContainerView, RecogidaDatosFragment.newInstance())
