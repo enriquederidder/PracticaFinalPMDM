@@ -3,11 +3,11 @@ package edr.practica.practicafinalpmdm.utils
 import android.app.Dialog
 import android.app.TimePickerDialog
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
-import java.util.Calendar
-import android.text.format.DateFormat;
 import edr.practica.practicafinalpmdm.ReservaFragment
+import java.util.Calendar
 
 class TimePicker : DialogFragment(), TimePickerDialog.OnTimeSetListener {
 

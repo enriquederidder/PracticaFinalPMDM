@@ -3,9 +3,8 @@ package edr.practica.practicafinalpmdm.models
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import edr.practica.practicafinalpmdm.models.DatosViaje
 
-class ReservaViewModel: ViewModel() {
+class ReservaViewModel : ViewModel() {
 
     private val _viajes: MutableLiveData<MutableList<DatosViaje>> = MutableLiveData()
     val viajes: LiveData<MutableList<DatosViaje>> = _viajes

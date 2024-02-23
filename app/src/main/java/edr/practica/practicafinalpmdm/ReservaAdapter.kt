@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import edr.practica.practicafinalpmdm.models.DatosCliente
 import edr.practica.practicafinalpmdm.models.DatosViaje
@@ -66,7 +65,8 @@ class ReservaAdapter(
             direccionDestinoTextView.text = "Destino: ${datosViaje.destino}"
             fechaRegresoTextView.text = "Fecha de regreso: ${datosViaje.fechaRegreso}"
             horaRegresoTextView.text = "Hora de regreso: ${datosViaje.horaRegreso}"
-            cantidadPasajerosTextView.text = "Cantidad de pasajeros: ${datosViaje.numerodePasajeros}"
+            cantidadPasajerosTextView.text =
+                "Cantidad de pasajeros: ${datosViaje.numerodePasajeros}"
 
             clienteSeleccionado?.let {
                 nombreClienteTextView.text = "Nombre del cliente: ${it.nombre}"

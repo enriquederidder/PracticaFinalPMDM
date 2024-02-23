@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class RecogidaDatosViewModel: ViewModel() {
+class RecogidaDatosViewModel : ViewModel() {
     private val _datos: MutableLiveData<MutableList<DatosCliente>> = MutableLiveData()
     val datos: LiveData<MutableList<DatosCliente>> = _datos
 

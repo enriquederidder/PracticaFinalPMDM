@@ -16,7 +16,9 @@ import androidx.fragment.app.commit
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import edr.practica.practicafinalpmdm.models.DatosViaje
 import edr.practica.practicafinalpmdm.models.ReservaViewModel
-import edr.practica.practicafinalpmdm.utils.*
+import edr.practica.practicafinalpmdm.utils.DatePicker
+import edr.practica.practicafinalpmdm.utils.LocationHelper
+import edr.practica.practicafinalpmdm.utils.TimePicker
 
 class ReservaFragment : Fragment() {
     private lateinit var v: View
@@ -25,10 +27,10 @@ class ReservaFragment : Fragment() {
     private lateinit var fechaRegresoTextView: TextView
     private lateinit var horaSalidaTextView: TextView
     private lateinit var horaRegresoTextView: TextView
+
     // Declaraciones para gps
     private lateinit var locationHelper: LocationHelper
     private val viaje: ReservaViewModel by activityViewModels()
-
 
 
     override fun onCreateView(
@@ -159,6 +161,7 @@ class ReservaFragment : Fragment() {
 
             }
     }
+
     fun updateDepartureTimeTextView(formattedTime: String) {
         horaSalidaTextView.text = formattedTime
     }

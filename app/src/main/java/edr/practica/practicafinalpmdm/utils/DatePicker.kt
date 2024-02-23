@@ -3,7 +3,6 @@ package edr.practica.practicafinalpmdm.utils
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.os.Bundle
-import android.view.View
 import android.widget.DatePicker
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
@@ -32,7 +31,11 @@ class DatePicker : DialogFragment(), DatePickerDialog.OnDateSetListener {
             val departureDate = reservaFragment?.getDepartureDate()
             if (departureDate != null && formattedDate <= departureDate) {
 
-                Toast.makeText(requireContext(), "Fecha de regreso no puede ser antes la de salida", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Fecha de regreso no puede ser antes la de salida",
+                    Toast.LENGTH_SHORT
+                ).show()
                 return
             }
         }
