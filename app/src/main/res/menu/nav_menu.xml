@@ -1,16 +1,13 @@
 <!-- Example nav_menu.xml -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/itemAnimales"
-        android:title="Aniamles" />
+        android:id="@+id/itemAyuda"
+        android:title="Ayuda" />
     <item
-        android:id="@+id/itemComida"
-        android:title="Comida" />
+        android:id="@+id/itemReserva"
+        android:title="Reservar" />
     <item
-        android:id="@+id/itemPaises"
-        android:title="Paises" />
-    <item
-        android:id="@+id/itemRest"
-        android:title="Rest" />
+        android:id="@+id/itemConsultar"
+        android:title="Consultar" />
 
 </menu>
