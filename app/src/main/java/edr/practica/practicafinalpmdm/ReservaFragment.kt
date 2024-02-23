@@ -20,13 +20,7 @@ import edr.practica.practicafinalpmdm.utils.*
 
 class ReservaFragment : Fragment() {
     private lateinit var v: View
-    private lateinit var direccionDestino: String
-    private lateinit var direccionSalida: String
-    private lateinit var cantidadPasajeros: String
-    private lateinit var fechaSalida: String
-    private lateinit var fechaRegreso: String
-    private lateinit var horaSalida: String
-    private lateinit var horaRegreso: String
+
     private lateinit var fechaSalidaTextView: TextView
     private lateinit var fechaRegresoTextView: TextView
     private lateinit var horaSalidaTextView: TextView
@@ -133,27 +127,6 @@ class ReservaFragment : Fragment() {
 
     }
 
-
-    fun updateDepartureTimeTextView(formattedTime: String) {
-        horaSalidaTextView.text = formattedTime
-    }
-
-    fun updateReturnTimeTextView(formattedTime: String) {
-        horaRegresoTextView.text = formattedTime
-    }
-
-    fun updateDepartureDateTextView(formattedDate: String) {
-        fechaSalidaTextView.text = formattedDate
-    }
-
-    fun updateReturnDateTextView(formattedDate: String) {
-        fechaRegresoTextView.text = formattedDate
-    }
-
-    fun getDepartureDate(): String {
-        return fechaSalidaTextView.text.toString()
-    }
-
     private fun setLocation(address: Address) {
         val addressText = buildString {
             for (i in 0..address.maxAddressLineIndex) {
@@ -177,10 +150,6 @@ class ReservaFragment : Fragment() {
             .setNegativeButton("No", null)
             .show()
     }
-    interface ReservaListener {
-        fun onDatosViajeAdded(datosViaje: DatosViaje)
-    }
-
 
     companion object {
         @JvmStatic
@@ -188,5 +157,24 @@ class ReservaFragment : Fragment() {
             ReservaFragment().apply {
 
             }
+    }
+    fun updateDepartureTimeTextView(formattedTime: String) {
+        horaSalidaTextView.text = formattedTime
+    }
+
+    fun updateReturnTimeTextView(formattedTime: String) {
+        horaRegresoTextView.text = formattedTime
+    }
+
+    fun updateDepartureDateTextView(formattedDate: String) {
+        fechaSalidaTextView.text = formattedDate
+    }
+
+    fun updateReturnDateTextView(formattedDate: String) {
+        fechaRegresoTextView.text = formattedDate
+    }
+
+    fun getDepartureDate(): String {
+        return fechaSalidaTextView.text.toString()
     }
 }
