@@ -5,6 +5,12 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <Button
+        android:id="@+id/buttonRemoveViaje"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Remove" />
+
     <TextView
         android:id="@+id/textViewDireccion"
         android:layout_width="match_parent"
@@ -56,23 +62,5 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:text="Cantidad de pasajeros:"/>
-
-    <TextView
-        android:id="@+id/textViewNombreCliente"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nombre cliente:" />
-
-    <TextView
-        android:id="@+id/textViewEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Email:" />
-
-    <TextView
-        android:id="@+id/textViewTelefono"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Telefono:" />
 
 </LinearLayout>

@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class ReservaViewModel : ViewModel() {
 
     private val _viajes: MutableLiveData<MutableList<DatosViaje>> = MutableLiveData()
-    val viajes: LiveData<MutableList<DatosViaje>> = _viajes
+    val viajes: LiveData<MutableList<DatosViaje>> get()= _viajes
 
     var viajeSelected: DatosViaje? = null
 
@@ -31,6 +31,8 @@ class ReservaViewModel : ViewModel() {
         _viajes.value = currentList
     }
 
+
+
     val getCaractera: LiveData<MutableList<DatosViaje>>
         get() = viajes
 
@@ -39,5 +41,6 @@ class ReservaViewModel : ViewModel() {
         set(item) {
             viajeSelected = item
         }
+
 
 }
