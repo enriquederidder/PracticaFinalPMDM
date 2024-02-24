@@ -8,11 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import edr.practica.practicafinalpmdm.databinding.ActivityMainBinding
 import edr.practica.practicafinalpmdm.models.RecogidaDatosViewModel
+import edr.practica.practicafinalpmdm.models.ReservaViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var drawerManager: DrawerManager
     private val  recogidaDatosFragment : RecogidaDatosViewModel by viewModels()
+    private val  reservaDatosFragment : ReservaViewModel by viewModels()
 
 
 
@@ -27,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         drawerManager = DrawerManager(this)
 
         this.recogidaDatosFragment.initialize(this)
+        this.reservaDatosFragment.initialize(this)
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -6,9 +6,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-@Database(entities = [Cliente::class], version = 1)
+@Database(entities = [Cliente::class, Viaje::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun clienteDao(): ClienteDao
+    abstract fun viajeDao(): ViajeDao
     companion object {
         private var instance: AppDatabase? = null
 

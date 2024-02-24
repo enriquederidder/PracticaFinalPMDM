@@ -1,8 +1,12 @@
 package edr.practica.practicafinalpmdm.models
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import edr.practica.practicafinalpmdm.dao.Cliente
+import edr.practica.practicafinalpmdm.dao.Viaje
+import edr.practica.practicafinalpmdm.dao.ViajeRepo
 
 class ReservaViewModel : ViewModel() {
 
@@ -10,34 +14,54 @@ class ReservaViewModel : ViewModel() {
     private var _viajes: MutableLiveData<MutableList<DatosViaje>> = MutableLiveData(mutableListOf())
     val viajes: LiveData<MutableList<DatosViaje>>
         get()= _viajes
+    private lateinit var _context: Context
+    lateinit var viajeRepo: ViajeRepo
+
+
 
     private var _viajeSeleccionado = MutableLiveData<DatosViaje?>(
         DatosViaje("","","","","","",0))
     var viajeSeleccionado = MutableLiveData<DatosViaje>(
         DatosViaje("","","","","","",0))
-    init {
-        this._viajes.value?.add(DatosViaje(
-            "Madrid",
-            "7-5-2024",
-            "10AM",
-            "Valencia",
-            "7-6-2024",
-            "1AM",
-            4))
-        this._viajes.value?.add(DatosViaje(
-            "Valencia",
-            "4-7-2024",
-            "10AM",
-            "Madrid",
-            "5-6-2024",
-            "1AM",
-            34))
+
+    fun initialize(c: Context) {
+        this._context = c
+        this.viajeRepo = ViajeRepo(c)
+        _viajes = MutableLiveData()
+        val viajes = this.viajeRepo.getAllViajes()
+        val datosViaje =
+            viajes.map { viaje ->
+                DatosViaje(
+                    viaje.direccion,
+                    viaje.fechaSalida,
+                    viaje.horaSalida,
+                    viaje.direccionRegreso,
+                    viaje.fechaRegreso,
+                    viaje.horaRegreso,
+                    viaje.cantidadPasajeros.toInt(),
+                )
+        }.toMutableList()
+        this._viajes.value = datosViaje
     }
+
 
     fun addViaje(datosViaje: DatosViaje) {
         val currentListViaje = _viajes.value ?: mutableListOf()
         currentListViaje.add(datosViaje)
         _viajes.value = currentListViaje
+        setVaiajeSeleccionado(datosViaje)
+
+        viajeRepo.insert(
+            Viaje(
+                direccion = datosViaje.direccion,
+                fechaSalida = datosViaje.fechaSalida,
+                horaSalida = datosViaje.horaSalida,
+                direccionRegreso = datosViaje.destino,
+                fechaRegreso = datosViaje.fechaRegreso,
+                horaRegreso = datosViaje.horaRegreso,
+                cantidadPasajeros = datosViaje.numerodePasajeros.toString(),
+            )
+        )
         setVaiajeSeleccionado(datosViaje)
     }
     fun removeViaje(datosViaje: DatosViaje) {

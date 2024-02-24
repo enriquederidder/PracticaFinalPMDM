@@ -26,7 +26,11 @@ class RecogidaDatosViewModel : ViewModel() {
         _datos = MutableLiveData()
         val clientes = this.clienteRepo.getAllClientes()
         val datosClientes = clientes.map { cliente ->
-            DatosCliente(cliente.nombre, cliente.email, cliente.numeroTelefono)
+            DatosCliente(
+                cliente.nombre,
+                cliente.email,
+                cliente.numeroTelefono
+            )
         }.toMutableList()
         this._datos.value = datosClientes
     }
