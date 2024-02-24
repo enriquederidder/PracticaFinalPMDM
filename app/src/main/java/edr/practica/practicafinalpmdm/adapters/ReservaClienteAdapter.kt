@@ -1,20 +1,21 @@
 package edr.practica.practicafinalpmdm.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import edr.practica.practicafinalpmdm.R
+import edr.practica.practicafinalpmdm.dao.ClienteRepo
 import edr.practica.practicafinalpmdm.models.DatosCliente
 import edr.practica.practicafinalpmdm.models.RecogidaDatosViewModel
-import androidx.activity.viewModels
 
 class ReservaClienteAdapter(
     private val datosViajeClienteList: MutableList<DatosCliente>,
-    private val recogidaDatosViewModel: RecogidaDatosViewModel
+    private val recogidaDatosViewModel: RecogidaDatosViewModel,
+
 ) : RecyclerView.Adapter<ReservaClienteAdapter.ViewHolder>() {
     var click: ((Int, DatosCliente) -> Unit)? = null
 
@@ -38,7 +39,6 @@ class ReservaClienteAdapter(
         holder.telefonoTextView.text = "Teléfono: ${datosCliente.numeroTelefone}"
 
         holder.removeButton.setOnClickListener {
-            // Call the removeCliente function from the ViewModel to remove the selected item
             recogidaDatosViewModel.removeCliente(datosCliente)
         }
     }

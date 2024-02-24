@@ -1,5 +1,6 @@
 package edr.practica.practicafinalpmdm.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +32,7 @@ class ReservaAdapter(
         notifyDataSetChanged()
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val datosViaje = datosViajeList[position]
         holder.idViewViaje.text = "ID Viaje: ${position}"
@@ -43,7 +45,7 @@ class ReservaAdapter(
         holder.cantidadPasajerosTextView.text = "Cantidad de pasajeros: ${datosViaje.numerodePasajeros}"
 
         holder.removeButton.setOnClickListener {
-            // Call the removeCliente function from the ViewModel to remove the selected item
+            // Call the removeViaje function from the ViewModel to remove the selected item
             reservaViewModel.removeViaje(datosViaje)
         }
 

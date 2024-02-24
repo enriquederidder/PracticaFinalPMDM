@@ -50,6 +50,9 @@ class DrawerManager(
             R.id.itemReserva -> {
                 replaceFragment(ReservaFragment())
             }
+            R.id.crearCliente -> {
+                replaceFragment(RecogidaDatosFragment())
+            }
 
             else -> return false
         }
