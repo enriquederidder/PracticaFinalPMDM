@@ -37,7 +37,7 @@ class ConsultarReservaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Initialize RecyclerView and adapter for viajes
-        reservaAdapter = ReservaAdapter(mutableListOf())
+        reservaAdapter = ReservaAdapter(mutableListOf(), recogidaDatosViewModel)
         recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = reservaAdapter

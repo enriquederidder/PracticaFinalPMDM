@@ -13,22 +13,24 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ConsultarRecycleViewer"
             android:layout_width="0dp"
-            android:layout_height="199dp"
+            android:layout_height="263dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ConsultarClientesRecycleViewer"
-            android:layout_width="0dp"
-            android:layout_height="344dp"
+            android:layout_width="411dp"
+            android:layout_height="168dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ConsultarRecycleViewer"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.412" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

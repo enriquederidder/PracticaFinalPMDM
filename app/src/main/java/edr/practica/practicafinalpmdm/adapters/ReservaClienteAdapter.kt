@@ -50,6 +50,7 @@ class ReservaClienteAdapter(
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val idView: TextView = itemView.findViewById(R.id.item_number)
+
         val nombreClienteTextView: TextView = itemView.findViewById(R.id.textViewNombre)
         val emailTextView: TextView = itemView.findViewById(R.id.textViewEmail)
         val telefonoTextView: TextView = itemView.findViewById(R.id.textViewNumero)

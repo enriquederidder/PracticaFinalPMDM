@@ -6,41 +6,94 @@ import androidx.lifecycle.ViewModel
 
 class ReservaViewModel : ViewModel() {
 
-    private val _viajes: MutableLiveData<MutableList<DatosViaje>> = MutableLiveData()
-    val viajes: LiveData<MutableList<DatosViaje>> get()= _viajes
+    private var new_item: Boolean = false
+    private var _viajes: MutableLiveData<MutableList<DatosViaje>> = MutableLiveData(mutableListOf())
+    val viajes: LiveData<MutableList<DatosViaje>>
+        get()= _viajes
 
-    var viajeSelected: DatosViaje? = null
-
+    private var _viajeSeleccionado = MutableLiveData<DatosViaje?>(
+        DatosViaje("","","","","","",0))
+    var viajeSeleccionado = MutableLiveData<DatosViaje>(
+        DatosViaje("","","","","","",0))
     init {
-        _viajes.value = mutableListOf(
-            DatosViaje(
-                "Salida 1",
-                "2024-02-20",
-                "08:00 AM",
-                "Destino 1",
-                "2024-02-25",
-                "06:00 PM",
-                2
-            )
-        )
+        this._viajes.value?.add(DatosViaje(
+            "Madrid",
+            "7-5-2024",
+            "10AM",
+            "Valencia",
+            "7-6-2024",
+            "1AM",
+            4))
     }
 
     fun addViaje(datosViaje: DatosViaje) {
+        val currentListViaje = _viajes.value ?: mutableListOf()
+        currentListViaje.add(datosViaje)
+        _viajes.value = currentListViaje
+        setVaiajeSeleccionado(datosViaje)
+    }
+    fun removeCliente(datosViaje: DatosViaje) {
         val currentList = _viajes.value ?: mutableListOf()
-        currentList.add(datosViaje)
+        currentList.remove(datosViaje)
         _viajes.value = currentList
     }
 
+    fun setVaiajeSeleccionado(datosViaje: DatosViaje?) {
+        _viajeSeleccionado.value = datosViaje
+    }
 
+    fun updatelist() {
+        var values = this._viajes.value
+        this._viajes.value = values
+    }
 
-    val getCaractera: LiveData<MutableList<DatosViaje>>
-        get() = viajes
+    private fun updateItem() {
+        this._viajeSeleccionado.value = this._viajeSeleccionado.value?.copy()
+    }
 
-    var getAndSetselected: DatosViaje?
-        get() = viajeSelected
-        set(item) {
-            viajeSelected = item
+    fun settSelected(item: DatosViaje) {
+        this._viajeSeleccionado.value = item
+        this.viajeSeleccionado.value = item.copy()
+        this.new_item = false
+    }
+
+    fun settSelected(index: Int) {
+        this._viajes.value?.let {
+            this._viajeSeleccionado.value = it.get(index)
+            this.viajeSeleccionado.value = it.get(index).copy()
+            this.new_item = false
         }
 
+    }
 
+    fun create_new() {
+        this._viajeSeleccionado.value = DatosViaje("","","","","","",0)
+        this.viajeSeleccionado.value = this._viajeSeleccionado.value
+        this.new_item = true
+    }
+
+    fun update() {
+        if (new_item) {
+            this.new_item = false
+            this.viajeSeleccionado.value?.let {
+                this._viajes.value?.add(it)
+                this.updatelist()
+            }
+
+        } else {
+            this._viajeSeleccionado.value?.let {
+                it.direccion = viajeSeleccionado.value?.let { it.direccion } ?: it.direccion
+                it.fechaSalida = viajeSeleccionado.value?.let { it.fechaSalida } ?: it.fechaSalida
+                it.horaSalida = viajeSeleccionado.value?.let { it.horaSalida } ?: it.horaSalida
+                it.destino = viajeSeleccionado.value?.let { it.destino } ?: it.destino
+                it.fechaRegreso = viajeSeleccionado.value?.let { it.fechaRegreso } ?: it.fechaRegreso
+                it.horaRegreso = viajeSeleccionado.value?.let { it.horaRegreso } ?: it.horaRegreso
+                it.numerodePasajeros = viajeSeleccionado.value?.let { it.numerodePasajeros } ?: it.numerodePasajeros
+
+                this.updatelist()
+                this.updateItem()
+            }
+        }
+
+    }
 }
