@@ -24,6 +24,14 @@ class ReservaViewModel : ViewModel() {
             "7-6-2024",
             "1AM",
             4))
+        this._viajes.value?.add(DatosViaje(
+            "Valencia",
+            "4-7-2024",
+            "10AM",
+            "Madrid",
+            "5-6-2024",
+            "1AM",
+            34))
     }
 
     fun addViaje(datosViaje: DatosViaje) {
@@ -32,7 +40,7 @@ class ReservaViewModel : ViewModel() {
         _viajes.value = currentListViaje
         setVaiajeSeleccionado(datosViaje)
     }
-    fun removeCliente(datosViaje: DatosViaje) {
+    fun removeViaje(datosViaje: DatosViaje) {
         val currentList = _viajes.value ?: mutableListOf()
         currentList.remove(datosViaje)
         _viajes.value = currentList

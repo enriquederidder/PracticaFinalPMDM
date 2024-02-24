@@ -16,7 +16,6 @@ class ReservaClienteAdapter(
     private val datosViajeClienteList: MutableList<DatosCliente>,
     private val recogidaDatosViewModel: RecogidaDatosViewModel
 ) : RecyclerView.Adapter<ReservaClienteAdapter.ViewHolder>() {
-
     var click: ((Int, DatosCliente) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,10 +32,10 @@ class ReservaClienteAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val datosCliente = datosViajeClienteList[position]
-        holder.idView.text = position.toString()
-        holder.nombreClienteTextView.text = datosCliente.nombre
-        holder.emailTextView.text = datosCliente.email
-        holder.telefonoTextView.text = datosCliente.numeroTelefone
+        holder.idView.text = "ID: ${position}"
+        holder.nombreClienteTextView.text = "Nombre: ${datosCliente.nombre}"
+        holder.emailTextView.text = "Email: ${datosCliente.email}"
+        holder.telefonoTextView.text = "Teléfono: ${datosCliente.numeroTelefone}"
 
         holder.removeButton.setOnClickListener {
             // Call the removeCliente function from the ViewModel to remove the selected item
@@ -50,10 +49,10 @@ class ReservaClienteAdapter(
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val idView: TextView = itemView.findViewById(R.id.item_number)
+        var removeButton: Button = itemView.findViewById(R.id.buttonRemoveSelected)
 
         val nombreClienteTextView: TextView = itemView.findViewById(R.id.textViewNombre)
         val emailTextView: TextView = itemView.findViewById(R.id.textViewEmail)
         val telefonoTextView: TextView = itemView.findViewById(R.id.textViewNumero)
-        var removeButton: Button = itemView.findViewById(R.id.buttonRemoveSelected)
     }
 }

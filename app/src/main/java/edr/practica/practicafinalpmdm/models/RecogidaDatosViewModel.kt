@@ -16,6 +16,8 @@ class RecogidaDatosViewModel : ViewModel() {
 
     init {
         this._datos.value?.add(DatosCliente("Enrique", "enriqu@e", "1234124"))
+        this._datos.value?.add(DatosCliente("Miguel", "Miguel@e", "5765675"))
+
 
     }
 
