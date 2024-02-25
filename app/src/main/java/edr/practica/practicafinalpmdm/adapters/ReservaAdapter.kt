@@ -41,10 +41,11 @@ class ReservaAdapter(
         holder.fechaRegresoTextView.text = "Fecha de regreso: ${datosViaje.fechaRegreso}"
         holder.horaRegresoTextView.text = "Hora de regreso: ${datosViaje.horaRegreso}"
         holder.cantidadPasajerosTextView.text = "Cantidad de pasajeros: ${datosViaje.numerodePasajeros}"
+        holder.idViaje.text = "ID Viaje: ${datosViaje.idViaje}"
 
         holder.removeButton.setOnClickListener {
             // Call removeViaje function from the ViewModel and pass the idViaje
-            reservaViewModel.removeViaje(datosViaje.idViaje)
+            reservaViewModel.removeViaje(datosViaje)
         }
 
     }
@@ -62,6 +63,7 @@ class ReservaAdapter(
         val fechaRegresoTextView: TextView = itemView.findViewById(R.id.textViewFechaRegreso)
         val horaRegresoTextView: TextView = itemView.findViewById(R.id.textViewHoraRegreso)
         val cantidadPasajerosTextView: TextView = itemView.findViewById(R.id.textViewCantidadPasajeros)
+        val idViaje: TextView = itemView.findViewById(R.id.item_numer_viaje)
 
     }
 }

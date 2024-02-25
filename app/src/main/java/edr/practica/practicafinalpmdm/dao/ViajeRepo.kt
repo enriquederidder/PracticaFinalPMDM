@@ -15,7 +15,7 @@ class ViajeRepo(var context: Context) {
     }
 
     fun deleteByIdVieje(idViaje: String) {
-        _viajeDao.deleteByidViaje(idViaje)
+        _viajeDao.deleteByIDViaje(idViaje)
     }
 
 

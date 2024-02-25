@@ -13,6 +13,6 @@ interface ViajeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertViajeS(viaje: Viaje)
 
-    @Query("DELETE FROM viajes WHERE idViaje = :idViewViaje")
-    fun deleteByidViaje(idViewViaje: String)
+    @Query("DELETE FROM viajes WHERE idViaje = :idViaje")
+    fun deleteByIDViaje(idViaje: String)
 }

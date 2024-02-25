@@ -40,11 +40,13 @@
                 android:text="Viaje ida y Vuelta"
                 android:textSize="20sp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/item_numer_viaje"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="0" />
+                android:ems="10"
+                android:inputType="text"
+                android:text="1" />
 
             <Button
                 android:id="@+id/buttonSetLocation"

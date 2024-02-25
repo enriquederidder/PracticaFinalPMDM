@@ -15,13 +15,14 @@ class ReservaViewModel : ViewModel() {
         get() = _viajes
     private lateinit var _context: Context
     lateinit var viajeRepo: ViajeRepo
+    private var idCounter: Int = 1
 
 
     private var _viajeSeleccionado = MutableLiveData<DatosViaje?>(
-        DatosViaje("", "", "", "", "", "", 0, "0")
+        DatosViaje("", "", "", "", "", "", 0, "")
     )
     var viajeSeleccionado = MutableLiveData<DatosViaje>(
-        DatosViaje("", "", "", "", "", "", 0, "0")
+        DatosViaje("", "", "", "", "", "", 0, "")
     )
 
     fun initialize(c: Context) {
@@ -39,7 +40,7 @@ class ReservaViewModel : ViewModel() {
                     viaje.fechaRegreso,
                     viaje.horaRegreso,
                     viaje.cantidadPasajeros.toInt(),
-                    viaje.idViaje.toString(),
+                    viaje.idViaje,
                 )
             }.toMutableList()
         this._viajes.value = datosViaje
@@ -48,6 +49,9 @@ class ReservaViewModel : ViewModel() {
 
     fun addViaje(datosViaje: DatosViaje) {
         val currentListViaje = _viajes.value ?: mutableListOf()
+        datosViaje.idViaje = idCounter.toString()
+        idCounter++
+
         currentListViaje.add(datosViaje)
         _viajes.value = currentListViaje
 
@@ -59,17 +63,19 @@ class ReservaViewModel : ViewModel() {
                 direccionRegreso = datosViaje.destino,
                 fechaRegreso = datosViaje.fechaRegreso,
                 horaRegreso = datosViaje.horaRegreso,
-                cantidadPasajeros = datosViaje.numerodePasajeros.toString()
+                cantidadPasajeros = datosViaje.numerodePasajeros.toString(),
+                idViaje = datosViaje.idViaje
             )
         )
         setVaiajeSeleccionado(datosViaje)
     }
 
-
-    fun removeViaje(datosViaje: Int) {
+    fun removeViaje(datosViaje: DatosViaje) {
         val currentList = _viajes.value ?: mutableListOf()
-        currentList.removeAt(datosViaje)
+        currentList.remove(datosViaje)
         _viajes.value = currentList
+
+        viajeRepo.deleteByIdVieje(datosViaje.idViaje)
     }
 
     fun setVaiajeSeleccionado(datosViaje: DatosViaje?) {
