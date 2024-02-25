@@ -50,6 +50,7 @@ class ReservaFragment : Fragment() {
             var fechaRetorno = v.findViewById<TextView>(R.id.textViewFechaRegreso).text.toString()
             var horaRetorno = v.findViewById<TextView>(R.id.textViewHoraRegreso).text.toString()
             var pasajeros = v.findViewById<TextView>(R.id.editTextPasajeros).text.toString()
+            var idViaje = v.findViewById<TextView>(R.id.item_numer_viaje).text.toString()
 
             val datosViaje = DatosViaje(
                 salida,
@@ -58,7 +59,8 @@ class ReservaFragment : Fragment() {
                 destino,
                 fechaRetorno,
                 horaRetorno,
-                pasajeros.toInt()
+                pasajeros.toInt(),
+                idViaje
             )
             viaje.addViaje(datosViaje)
 

@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import edr.practica.practicafinalpmdm.dao.Cliente
 import edr.practica.practicafinalpmdm.dao.Viaje
 import edr.practica.practicafinalpmdm.dao.ViajeRepo
 
@@ -13,16 +12,17 @@ class ReservaViewModel : ViewModel() {
     private var new_item: Boolean = false
     private var _viajes: MutableLiveData<MutableList<DatosViaje>> = MutableLiveData(mutableListOf())
     val viajes: LiveData<MutableList<DatosViaje>>
-        get()= _viajes
+        get() = _viajes
     private lateinit var _context: Context
     lateinit var viajeRepo: ViajeRepo
 
 
-
     private var _viajeSeleccionado = MutableLiveData<DatosViaje?>(
-        DatosViaje("","","","","","",0))
+        DatosViaje("", "", "", "", "", "", 0, "0")
+    )
     var viajeSeleccionado = MutableLiveData<DatosViaje>(
-        DatosViaje("","","","","","",0))
+        DatosViaje("", "", "", "", "", "", 0, "0")
+    )
 
     fun initialize(c: Context) {
         this._context = c
@@ -39,8 +39,9 @@ class ReservaViewModel : ViewModel() {
                     viaje.fechaRegreso,
                     viaje.horaRegreso,
                     viaje.cantidadPasajeros.toInt(),
+                    viaje.idViaje.toString(),
                 )
-        }.toMutableList()
+            }.toMutableList()
         this._viajes.value = datosViaje
     }
 
@@ -49,7 +50,6 @@ class ReservaViewModel : ViewModel() {
         val currentListViaje = _viajes.value ?: mutableListOf()
         currentListViaje.add(datosViaje)
         _viajes.value = currentListViaje
-        setVaiajeSeleccionado(datosViaje)
 
         viajeRepo.insert(
             Viaje(
@@ -59,14 +59,16 @@ class ReservaViewModel : ViewModel() {
                 direccionRegreso = datosViaje.destino,
                 fechaRegreso = datosViaje.fechaRegreso,
                 horaRegreso = datosViaje.horaRegreso,
-                cantidadPasajeros = datosViaje.numerodePasajeros.toString(),
+                cantidadPasajeros = datosViaje.numerodePasajeros.toString()
             )
         )
         setVaiajeSeleccionado(datosViaje)
     }
-    fun removeViaje(datosViaje: DatosViaje) {
+
+
+    fun removeViaje(datosViaje: Int) {
         val currentList = _viajes.value ?: mutableListOf()
-        currentList.remove(datosViaje)
+        currentList.removeAt(datosViaje)
         _viajes.value = currentList
     }
 
@@ -99,7 +101,7 @@ class ReservaViewModel : ViewModel() {
     }
 
     fun create_new() {
-        this._viajeSeleccionado.value = DatosViaje("","","","","","",0)
+        this._viajeSeleccionado.value = DatosViaje("", "", "", "", "", "", 0, "")
         this.viajeSeleccionado.value = this._viajeSeleccionado.value
         this.new_item = true
     }
@@ -118,9 +120,11 @@ class ReservaViewModel : ViewModel() {
                 it.fechaSalida = viajeSeleccionado.value?.let { it.fechaSalida } ?: it.fechaSalida
                 it.horaSalida = viajeSeleccionado.value?.let { it.horaSalida } ?: it.horaSalida
                 it.destino = viajeSeleccionado.value?.let { it.destino } ?: it.destino
-                it.fechaRegreso = viajeSeleccionado.value?.let { it.fechaRegreso } ?: it.fechaRegreso
+                it.fechaRegreso =
+                    viajeSeleccionado.value?.let { it.fechaRegreso } ?: it.fechaRegreso
                 it.horaRegreso = viajeSeleccionado.value?.let { it.horaRegreso } ?: it.horaRegreso
-                it.numerodePasajeros = viajeSeleccionado.value?.let { it.numerodePasajeros } ?: it.numerodePasajeros
+                it.numerodePasajeros =
+                    viajeSeleccionado.value?.let { it.numerodePasajeros } ?: it.numerodePasajeros
 
                 this.updatelist()
                 this.updateItem()

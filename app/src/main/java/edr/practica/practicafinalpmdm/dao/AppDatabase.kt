@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-@Database(entities = [Cliente::class, Viaje::class], version = 2)
+@Database(entities = [Cliente::class, Viaje::class], version = 7)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun clienteDao(): ClienteDao
     abstract fun viajeDao(): ViajeDao

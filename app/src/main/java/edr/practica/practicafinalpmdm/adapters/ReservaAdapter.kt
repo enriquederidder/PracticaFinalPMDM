@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import edr.practica.practicafinalpmdm.R
 import edr.practica.practicafinalpmdm.models.DatosCliente
 import edr.practica.practicafinalpmdm.models.DatosViaje
-import edr.practica.practicafinalpmdm.models.RecogidaDatosViewModel
 import edr.practica.practicafinalpmdm.models.ReservaViewModel
 
 class ReservaAdapter(
@@ -35,7 +34,6 @@ class ReservaAdapter(
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val datosViaje = datosViajeList[position]
-        holder.idViewViaje.text = "ID Viaje: ${position}"
         holder.direccionSalidaTextView.text = "Dirección de salida: ${datosViaje.direccion}"
         holder.fechaSalidaTextView.text = "Fecha de salida: ${datosViaje.fechaSalida}"
         holder.horaSalidaTextView.text = "Hora de salida: ${datosViaje.horaSalida}"
@@ -45,8 +43,8 @@ class ReservaAdapter(
         holder.cantidadPasajerosTextView.text = "Cantidad de pasajeros: ${datosViaje.numerodePasajeros}"
 
         holder.removeButton.setOnClickListener {
-            // Call the removeViaje function from the ViewModel to remove the selected item
-            reservaViewModel.removeViaje(datosViaje)
+            // Call removeViaje function from the ViewModel and pass the idViaje
+            reservaViewModel.removeViaje(datosViaje.idViaje)
         }
 
     }
@@ -55,7 +53,6 @@ class ReservaAdapter(
         return datosViajeList.size
     }
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val idViewViaje: TextView = itemView.findViewById(R.id.item_numer_viaje)
         var removeButton: TextView = itemView.findViewById(R.id.buttonRemoveViaje)
 
         val direccionSalidaTextView: TextView = itemView.findViewById(R.id.textViewDireccion)
