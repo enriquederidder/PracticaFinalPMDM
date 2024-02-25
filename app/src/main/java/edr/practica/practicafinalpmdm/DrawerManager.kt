@@ -12,7 +12,14 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
+import edr.practica.practicafinalpmdm.api.CatApiService
+import edr.practica.practicafinalpmdm.api.RetrofitClient
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+
 
 class DrawerManager(
     private val activity: AppCompatActivity
@@ -23,6 +30,8 @@ class DrawerManager(
     private lateinit var requestCamera: ActivityResultLauncher<Void?>
     private lateinit var imageViewPerfil: ImageView
     private val REQUEST_IMAGE_CAPTURE = 1001
+    private val catApiService = RetrofitClient.instance.create(CatApiService::class.java)
+
 
     init {
         requestConfigs()
@@ -63,6 +72,10 @@ class DrawerManager(
             R.id.crearCliente -> {
                 replaceFragment(RecogidaDatosFragment())
             }
+            R.id.ItemCambiarPerfilRandom -> {
+                getRandomCatImage()
+                return false
+            }
             R.id.cambiarPerfilImagen -> {
                 if (ContextCompat.checkSelfPermission(
                         activity,
@@ -83,6 +96,19 @@ class DrawerManager(
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+    private fun getRandomCatImage() {
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+                val catImages = catApiService.getRandomCatImage()
+                if (catImages.isNotEmpty()) {
+                    val randomCatImage = catImages.first() // Get the first random cat image
+                    Glide.with(activity).load(randomCatImage.url).into(imageViewPerfil)
+                }
+            } catch (e: Exception) {
+                // TODO Handle error
+            }
+        }
     }
 
     private fun replaceFragment(fragment: Fragment) {
