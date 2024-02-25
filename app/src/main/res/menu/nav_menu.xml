@@ -14,5 +14,10 @@
     <item
         android:id="@+id/itemConsultar"
         android:title="Consultar" />
+    <item
+        android:id="@+id/cambiarPerfilImagen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Cambiar Perfil" />
 
 </menu>
