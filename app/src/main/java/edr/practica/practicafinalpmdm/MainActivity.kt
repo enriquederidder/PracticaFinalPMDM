@@ -13,9 +13,8 @@ import edr.practica.practicafinalpmdm.models.ReservaViewModel
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var drawerManager: DrawerManager
-    private val  recogidaDatosFragment : RecogidaDatosViewModel by viewModels()
-    private val  reservaDatosFragment : ReservaViewModel by viewModels()
-
+    private val recogidaDatosFragment: RecogidaDatosViewModel by viewModels()
+    private val reservaDatosFragment: ReservaViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,7 +1,6 @@
 package edr.practica.practicafinalpmdm.models
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,15 +9,16 @@ import edr.practica.practicafinalpmdm.dao.ClienteRepo
 
 class RecogidaDatosViewModel : ViewModel() {
     private var new_item: Boolean = false
-    private var _datos: MutableLiveData<MutableList<DatosCliente>> = MutableLiveData(mutableListOf())
+    private var _datos: MutableLiveData<MutableList<DatosCliente>> =
+        MutableLiveData(mutableListOf())
 
     private lateinit var _context: Context
     lateinit var clienteRepo: ClienteRepo
     val datos: LiveData<MutableList<DatosCliente>>
         get() = _datos
 
-    private var _clienteSeleccionado = MutableLiveData<DatosCliente?>(DatosCliente("","",""))
-    var clienteSeleccionado = MutableLiveData<DatosCliente>(DatosCliente("","",""))
+    private var _clienteSeleccionado = MutableLiveData<DatosCliente?>(DatosCliente("", "", ""))
+    var clienteSeleccionado = MutableLiveData<DatosCliente>(DatosCliente("", "", ""))
 
     fun initialize(c: Context) {
         this._context = c
@@ -42,7 +42,13 @@ class RecogidaDatosViewModel : ViewModel() {
         _datos.value = currentList
 
         // Insert the new client into the database
-        clienteRepo.insert(Cliente(nombre = datosCliente.nombre, email = datosCliente.email, numeroTelefono = datosCliente.numeroTelefone))
+        clienteRepo.insert(
+            Cliente(
+                nombre = datosCliente.nombre,
+                email = datosCliente.email,
+                numeroTelefono = datosCliente.numeroTelefone
+            )
+        )
         setClienteSeleccionado(datosCliente) // Set the clienteSeleccionado after adding the client
     }
 
@@ -54,6 +60,7 @@ class RecogidaDatosViewModel : ViewModel() {
         // Remove the client from the database using phone number
         clienteRepo.deleteByPhoneNumber(datosCliente.numeroTelefone)
     }
+
     fun setClienteSeleccionado(datosCliente: DatosCliente?) {
         _clienteSeleccionado.value = datosCliente
     }
@@ -66,10 +73,12 @@ class RecogidaDatosViewModel : ViewModel() {
     private fun updateItem() {
         this._clienteSeleccionado.value = this._clienteSeleccionado.value?.copy()
     }
+
     private fun updatecategorias() {
         var values = this._datos.value
         this._datos.value = values
     }
+
     fun settSelected(item: DatosCliente) {
         this._clienteSeleccionado.value = item
         this.clienteSeleccionado.value = item.copy()
@@ -103,7 +112,8 @@ class RecogidaDatosViewModel : ViewModel() {
             this._clienteSeleccionado.value?.let {
                 it.nombre = clienteSeleccionado.value?.let { it.nombre } ?: it.nombre
                 it.email = clienteSeleccionado.value?.let { it.email } ?: it.email
-                it.numeroTelefone = clienteSeleccionado.value?.let { it.numeroTelefone } ?: it.numeroTelefone
+                it.numeroTelefone =
+                    clienteSeleccionado.value?.let { it.numeroTelefone } ?: it.numeroTelefone
 
 
                 this.updatelist()

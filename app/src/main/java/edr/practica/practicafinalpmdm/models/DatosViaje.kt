@@ -9,5 +9,4 @@ data class DatosViaje(
     var horaRegreso: String,
     var numerodePasajeros: Int,
     var idViaje: String
-) {
-}
+)

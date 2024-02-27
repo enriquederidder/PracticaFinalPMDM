@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
 import edr.practica.practicafinalpmdm.api.CatApiService
 import edr.practica.practicafinalpmdm.api.RetrofitClient
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -69,22 +70,25 @@ class DrawerManager(
             R.id.itemReserva -> {
                 replaceFragment(ReservaFragment())
             }
+
             R.id.crearCliente -> {
                 replaceFragment(RecogidaDatosFragment())
             }
+
             R.id.ItemCambiarPerfilRandom -> {
                 getRandomCatImage()
                 return false
             }
+
             R.id.cambiarPerfilImagen -> {
                 if (ContextCompat.checkSelfPermission(
                         activity,
-                        android.Manifest.permission.CAMERA
+                        Manifest.permission.CAMERA
                     ) != PackageManager.PERMISSION_GRANTED
                 ) {
                     ActivityCompat.requestPermissions(
                         activity,
-                        arrayOf(android.Manifest.permission.CAMERA),
+                        arrayOf(Manifest.permission.CAMERA),
                         REQUEST_IMAGE_CAPTURE
                     )
                 } else {
@@ -92,11 +96,14 @@ class DrawerManager(
                 }
                 return true
             }
+
             else -> return false
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
+
+    @OptIn(DelicateCoroutinesApi::class)
     private fun getRandomCatImage() {
         GlobalScope.launch(Dispatchers.Main) {
             try {

@@ -10,6 +10,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 abstract class AppDatabase : RoomDatabase() {
     abstract fun clienteDao(): ClienteDao
     abstract fun viajeDao(): ViajeDao
+
     companion object {
         private var instance: AppDatabase? = null
 
@@ -29,10 +30,6 @@ abstract class AppDatabase : RoomDatabase() {
         }
 
         private val roomCallback = object : Callback() {
-            override fun onCreate(db: SupportSQLiteDatabase) {
-                super.onCreate(db)
-
-            }
         }
     }
 }

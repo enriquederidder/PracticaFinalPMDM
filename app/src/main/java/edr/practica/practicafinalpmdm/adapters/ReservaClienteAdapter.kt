@@ -1,6 +1,5 @@
 package edr.practica.practicafinalpmdm.adapters
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +7,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import edr.practica.practicafinalpmdm.R
-import edr.practica.practicafinalpmdm.dao.ClienteRepo
 import edr.practica.practicafinalpmdm.models.DatosCliente
 import edr.practica.practicafinalpmdm.models.RecogidaDatosViewModel
 
@@ -16,7 +14,7 @@ class ReservaClienteAdapter(
     private val datosViajeClienteList: MutableList<DatosCliente>,
     private val recogidaDatosViewModel: RecogidaDatosViewModel,
 
-) : RecyclerView.Adapter<ReservaClienteAdapter.ViewHolder>() {
+    ) : RecyclerView.Adapter<ReservaClienteAdapter.ViewHolder>() {
     var click: ((Int, DatosCliente) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

@@ -4,6 +4,7 @@ import android.content.Context
 
 class ClienteRepo(var context: Context) {
     private var _clienteDao: ClienteDao
+
     init {
         val database = AppDatabase.getInstance(context)
         _clienteDao = database.clienteDao()

@@ -40,7 +40,8 @@ class ReservaAdapter(
         holder.direccionDestinoTextView.text = "Dirección de destino: ${datosViaje.destino}"
         holder.fechaRegresoTextView.text = "Fecha de regreso: ${datosViaje.fechaRegreso}"
         holder.horaRegresoTextView.text = "Hora de regreso: ${datosViaje.horaRegreso}"
-        holder.cantidadPasajerosTextView.text = "Cantidad de pasajeros: ${datosViaje.numerodePasajeros}"
+        holder.cantidadPasajerosTextView.text =
+            "Cantidad de pasajeros: ${datosViaje.numerodePasajeros}"
         holder.idViaje.text = "ID Viaje: ${datosViaje.idViaje}"
 
         holder.removeButton.setOnClickListener {
@@ -53,6 +54,7 @@ class ReservaAdapter(
     override fun getItemCount(): Int {
         return datosViajeList.size
     }
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var removeButton: TextView = itemView.findViewById(R.id.buttonRemoveViaje)
 
@@ -62,7 +64,8 @@ class ReservaAdapter(
         val direccionDestinoTextView: TextView = itemView.findViewById(R.id.textViewDestino)
         val fechaRegresoTextView: TextView = itemView.findViewById(R.id.textViewFechaRegreso)
         val horaRegresoTextView: TextView = itemView.findViewById(R.id.textViewHoraRegreso)
-        val cantidadPasajerosTextView: TextView = itemView.findViewById(R.id.textViewCantidadPasajeros)
+        val cantidadPasajerosTextView: TextView =
+            itemView.findViewById(R.id.textViewCantidadPasajeros)
         val idViaje: TextView = itemView.findViewById(R.id.item_numer_viaje)
 
     }
